@@ -8,9 +8,16 @@
     = csrf_meta_tags
   %body
     .col-lg-10.col-lg-offset-1
-      %nav.navbar.navbar-inverse
+      %nav.navbar.navbar-default
         .container-fluid
+          %ul.nav.navbar-nav.navbar-left
+            %li
+              = link_to 'Games', games_path
           %ul.nav.navbar-nav.navbar-right
             %li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
+      %ol.breadcrumb
+        - breadcrumbs_for(action_name).each do |label, path|
+          %li
+            = link_to label, path
       = yield

@@ -1,0 +1,7 @@
+- if model.errors.any?
+  .form-group.text-danger
+    %ul
+      - model.errors.full_messages.each do |message|
+        %li
+          %strong
+            = message

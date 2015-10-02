@@ -1,0 +1,11 @@
+= render 'shared/errors', model: @game
+%h2
+  Game
+= form_for @game do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-primary'
+- if @game.persisted?
+  = link_to 'Rules', game_game_rules_path(@game)

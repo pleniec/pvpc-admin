@@ -1,0 +1,34 @@
+%h2
+  Rules of
+  = link_to @game.name, edit_game_path(@game)
+.form-group
+  = link_to 'New rule', new_game_game_rule_path, class: 'btn btn-block btn-primary'
+- if @game.game_rules.any?
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          ID
+        %th
+          Description
+        %th
+          Created at
+        %th
+          Updated at
+        %th
+        %th
+    %tbody
+      - @game.game_rules.each do |game_rule|
+        %tr
+          %td
+            = game_rule.id
+          %td
+            = game_rule.description
+          %td
+            = game_rule.created_at
+          %td
+            = game_rule.updated_at
+          %th
+            = link_to 'Edit', edit_game_game_rule_path(@game, game_rule), class: 'btn btn-block btn-success'
+          %th
+            = button_to 'Destroy', game_game_rule_path(@game, game_rule), class: 'btn btn-block btn-danger', method: :delete

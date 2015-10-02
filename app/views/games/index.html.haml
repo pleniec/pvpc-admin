@@ -1,0 +1,33 @@
+%h2
+  Games
+.form-group
+  = link_to 'New game', new_game_path, class: 'btn btn-block btn-primary'
+- if @games.any?
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          ID
+        %th
+          Name
+        %th
+          Created at
+        %th
+          Updated at
+        %th
+        %th
+    %tbody
+      - @games.each do |game|
+        %tr
+          %td
+            = game.id
+          %td
+            = game.name
+          %td
+            = game.created_at
+          %td
+            = game.updated_at
+          %th
+            = link_to 'Edit', edit_game_path(game), class: 'btn btn-block btn-success'
+          %th
+            = button_to 'Destroy', game_path(game), class: 'btn btn-block btn-danger', method: :delete

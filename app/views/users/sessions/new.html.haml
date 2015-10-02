@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title PvpcAdmin
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .col-lg-2.col-lg-offset-5
+      %h2.text-center
+        pvpc admin
+      - if flash[:alert]
+        .alert.alert-danger
+          %span.glyphicon.glyphicon-exclamation-sign
+          = flash[:alert]
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+          = f.label :email
+          %br
+          = f.email_field :email, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label :password
+          %br
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.submit 'Log in', class: 'btn btn-primary'

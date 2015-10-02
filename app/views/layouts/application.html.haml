@@ -7,4 +7,10 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    = yield
+    .col-lg-10.col-lg-offset-1
+      %nav.navbar.navbar-inverse
+        .container-fluid
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to 'Sign out', destroy_user_session_path, method: :delete
+      = yield
